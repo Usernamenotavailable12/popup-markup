@@ -1,0 +1,94 @@
+<style>
+    @font-face {
+        font-family: 'Noto Sans Ambassadori Slim';
+        src: url(https://usernamenotavailable12.github.io/Font-Repository/NotoSansAmbassadori-Regular.ttf);
+
+    }
+
+    @font-face {
+        font-family: 'Noto Sans Ambassadori';
+        src: url(https://usernamenotavailable12.github.io/Font-Repository/NotoSansAmbassadori-Bold.ttf);
+    }
+
+    :root {
+        --popup-accent-color: rgba(207, 22, 125);
+        --popup-border-color: rgb(143, 20, 88);
+        --popup-primary-color: rgba(255, 255, 255);
+        --popup-backdrop-color: rgba(0, 0, 0, 0.3);
+        --popup-inner-backgrund-color: linear-gradient(0deg, rgba(94, 0, 47, 0.3), rgb(93 0 94 / 70%), rgb(80 0 94 / 87%));
+    }
+
+    .data-modal-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Noto Sans Ambassadori Slim';
+
+        &.close {
+            justify-content: end;
+            align-items: end;
+        }
+
+        button[data-open-modal] {
+            all: unset;
+            background-color: var(--popup-accent-color);
+            color: var(--popup-primary-color);
+            padding: 7px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+
+    .dialog-overlay-inner {
+        width: 50%;
+        height: 50%;
+        border: none;
+        font-family: 'Noto Sans Ambassadori Slim';
+        border-radius: 10px;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+        background: var(--popup-inner-backgrund-color);
+        color: var(--popup-primary-color);
+        border-bottom: solid 4px var(--popup-border-color);
+
+        @media (max-width: 768px) {
+            width: 80%;
+            height: 80%;
+        }
+
+        button[data-close-modal] {
+            all: unset;
+            color: var(--popup-primary-color);
+            cursor: pointer;
+            font-family: 'Noto Sans Ambassadori';
+            background-color: var(--popup-accent-color);
+            padding: 5px;
+            border-radius: 100%;
+            width: 17px;
+            height: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                background-color: var(--popup-primary-color);
+                color: var(--popup-accent-color);
+            }
+        }
+
+        &::backdrop {
+            background-color: var(--popup-backdrop-color);
+            backdrop-filter: blur(3px);
+            --webkit-backdrop-filter: blur(3px);
+        }
+    }
+</style>
+
+
+<div class="data-modal-button"><button data-open-modal onclick="document.querySelector('[data-modal]').showModal()">OPEN
+        POPUP</button></div>
+
+<dialog class="dialog-overlay-inner" data-modal>
+    <div class="data-modal-button close"><button data-close-modal
+            onclick="document.querySelector('[data-modal]').close()">X</button></div>
+    <div>Popup Content</div>
+</dialog>
